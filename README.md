@@ -1,14 +1,24 @@
-# Копируем переменные окружения
+# Учебный проект интеграции кастомной авторизации и keycloak в проект drf
+
+## Swagger
+http://127.0.0.1:5000/api/docs/swagger/
+
+## Запуск тестов
+```bash
+./tests.sh
+```
+
+## Копируем переменные окружения
 ```bash
 cp .env.example .env
 ```
 
-# Поднимем инфраструктуру keycloak
+## Поднимем инфраструктуру keycloak
 ```bash
 docker compose -f docker-compose-keycloak.yml up -d
 ```
 
-# Поднимаем приложение
+## Поднимаем приложение
 ```bash
 uv sync
 uv run python ./backend/manage.py runserver 0.0.0.0:5000
