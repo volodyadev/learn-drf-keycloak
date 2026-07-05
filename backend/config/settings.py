@@ -98,11 +98,25 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ============================================================
+#  USER MODEL
+# ============================================================
+AUTH_USER_MODEL = (
+    "users.User"  # <-- ОБЯЗАТЕЛЬНО! Указываем кастомную модель пользователя
+)
+
+# ============================================================
+#  AUTHENTICATION BACKENDS
+# ============================================================
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",  # стандартный бэкенд для аутентификации по username/password
+]
+
+# ============================================================
 #  DRF
 # ============================================================
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "users.authentication.KeycloakAuthentication",  # your custom auth class
+        "users.authentication.KeycloakAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
@@ -123,3 +137,10 @@ KEYCLOAK_CONFIG = {
     "CLIENT_ID": os.getenv("KEYCLOAK_CLIENT_ID", "myclient"),
     "CLIENT_SECRET": os.getenv("KEYCLOAK_CLIENT_SECRET", "your-client-secret"),
 }
+
+# ============================================================
+#  JWT SECRET (for custom auth) – можно использовать отдельный ключ
+# ============================================================
+JWT_SECRET_KEY = os.getenv(
+    "JWT_SECRET_KEY", SECRET_KEY
+)  # по умолчанию используем SECRET_KEY
