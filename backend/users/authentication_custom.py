@@ -1,7 +1,8 @@
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
-from .models import User
+
 from .jwt_utils import decode_jwt
+from .models import User
 
 
 class CustomJWTAuthentication(BaseAuthentication):

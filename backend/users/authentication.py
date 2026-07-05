@@ -1,5 +1,6 @@
-import jwt
 import time
+
+import jwt
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 

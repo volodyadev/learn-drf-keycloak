@@ -1,16 +1,17 @@
-import jwt
 import datetime
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, BasePermission
-from rest_framework import status, serializers
+
+import jwt
+from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from keycloak import KeycloakAdmin
-from django.conf import settings
-from .permissions import HasKeycloakRole
-from .models import User, Role, AccessRule
+from rest_framework import serializers, status
+from rest_framework.permissions import AllowAny, BasePermission
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .models import AccessRule, Role, User
+from .permissions import HasKeycloakRole
 
 # ============================================================
 #  ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ КАСТОМНОЙ СИСТЕМЫ (JWT)
