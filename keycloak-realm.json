@@ -1,0 +1,151 @@
+{
+  "realm": "myrealm",
+  "enabled": true,
+  "verifyEmail": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "requiredActions": [
+    {
+      "alias": "CONFIGURE_TOTP",
+      "name": "Configure OTP",
+      "providerId": "CONFIGURE_TOTP",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "TERMS_AND_CONDITIONS",
+      "name": "Terms and Conditions",
+      "providerId": "TERMS_AND_CONDITIONS",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "UPDATE_PASSWORD",
+      "name": "Update Password",
+      "providerId": "UPDATE_PASSWORD",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "UPDATE_PROFILE",
+      "name": "Update Profile",
+      "providerId": "UPDATE_PROFILE",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "VERIFY_EMAIL",
+      "name": "Verify Email",
+      "providerId": "VERIFY_EMAIL",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "DELETE_ACCOUNT",
+      "name": "Delete Account",
+      "providerId": "DELETE_ACCOUNT",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "WEB_AUTHN_REGISTER",
+      "name": "Webauthn Register",
+      "providerId": "WEB_AUTHN_REGISTER",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "WEB_AUTHN_REGISTER_PASSWORDLESS",
+      "name": "Webauthn Register Passwordless",
+      "providerId": "WEB_AUTHN_REGISTER_PASSWORDLESS",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "VERIFY_PROFILE",
+      "name": "Verify Profile",
+      "providerId": "VERIFY_PROFILE",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "DELETE_CREDENTIAL",
+      "name": "Delete Credential",
+      "providerId": "DELETE_CREDENTIAL",
+      "enabled": false,
+      "defaultAction": false
+    },
+    {
+      "alias": "UPDATE_USER_LOCALE",
+      "name": "Update User Locale",
+      "providerId": "UPDATE_USER_LOCALE",
+      "enabled": false,
+      "defaultAction": false
+    }
+  ],
+  "users": [
+    {
+      "username": "adminuser",
+      "enabled": true,
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "requiredActions": [],
+      "credentials": [
+        { "type": "password", "value": "admin123", "temporary": false }
+      ],
+      "realmRoles": ["admin"]
+    },
+    {
+      "username": "regularuser",
+      "enabled": true,
+      "email": "user@example.com",
+      "emailVerified": true,
+      "requiredActions": [],
+      "credentials": [
+        { "type": "password", "value": "user123", "temporary": false }
+      ],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "myadmin",
+      "enabled": true,
+      "email": "myadmin@example.com",
+      "emailVerified": true,
+      "requiredActions": [],
+      "credentials": [
+        { "type": "password", "value": "admin123", "temporary": false }
+      ],
+      "realmRoles": ["admin"]
+    }
+  ],
+  "roles": {
+    "realm": [
+      { "name": "admin" },
+      { "name": "user" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "myclient",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "your-client-secret",
+      "redirectUris": ["http://localhost:8000/*"],
+      "webOrigins": ["http://localhost:8000"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true
+    },
+    {
+      "clientId": "myapp-public",
+      "enabled": true,
+      "publicClient": true,
+      "redirectUris": ["http://localhost:8000/*"],
+      "webOrigins": ["http://localhost:8000"],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true
+    }
+  ]
+}
